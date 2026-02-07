@@ -1,4 +1,4 @@
-# text_correction.py
+# autograder/text_correction.py
 
 import re
 import json
@@ -9,6 +9,22 @@ from .config import OOAD_VOCAB
 
 # Load English dictionary once
 ENGLISH_WORDS = set(w.lower() for w in words.words())
+
+# ========== ADD THESE FUNCTIONS AT THE VERY TOP ==========
+def load_fixes():
+    """Load OCR fixes from JSON file"""
+    path = os.path.join(os.path.dirname(__file__), 'ocr_fixes.json')
+    if os.path.exists(path):
+        with open(path, 'r') as f:
+            return json.load(f)
+    return {}
+
+def save_fixes(fixes):
+    """Save OCR fixes to JSON file"""
+    path = os.path.join(os.path.dirname(__file__), 'ocr_fixes.json')
+    with open(path, 'w') as f:
+        json.dump(fixes, f, indent=2)
+# ===========================================================
 
 # Default manual fixes
 DEFAULT_OCR_FIXES = {
@@ -28,7 +44,6 @@ DEFAULT_OCR_FIXES = {
     "cte": "and", "Daec": "data", "Daec@s": "data", "aal": "all", "SYstem": "system",
     "~System": "system", "Opennes": "openness", "Pob-": "property", "mony": "many",
     "tex": "next", "'lab_": "label", "lab": "label", "en": "and", "en/": "and",
-    # Noise cleanup
     "8": "", "0": "", "6e": "be", "€": "", "$": "", "~J": "", "@": "", "5": "", "/": "",
     "'": "", "_": "", ".": "", "(": "", ")": "", "r": "", "c": "", "s": "", "k": "",
     "ct": "", "stem": "system", "4stem": "system", "24k": "up", "UP": "up", "'lab": "label",

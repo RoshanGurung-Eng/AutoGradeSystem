@@ -1,0 +1,63 @@
+<!-- autograder/templates/autograder/home.html -->
+
+<!doctype html>
+<html>
+  <head>
+    <title>AutoGrade System</title>
+    <style>
+      body {
+        font-family: Arial;
+        text-align: center;
+        padding: 100px 20px;
+        background: #f5f5f5;
+      }
+      h1 {
+        color: #333;
+        margin-bottom: 40px;
+      }
+      .btn {
+        display: inline-block;
+        margin: 15px;
+        padding: 15px 30px;
+        background: #4caf50;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 18px;
+      }
+      .btn:hover {
+        background: #45a049;
+      }
+      .btn.teacher {
+        background: #2196f3;
+      }
+      .btn.teacher:hover {
+        background: #0b7dda;
+      }
+      .container {
+        background: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🎓 AutoGrade System</h1>
+      <p>AI-Powered Automated Answer Sheet Grading</p>
+
+      <div style="margin-top: 40px">
+        <a href="/teacher/dashboard/" class="btn teacher"
+          >👨‍🏫 Teacher Dashboard</a
+        >
+        <a href="/student/upload/" class="btn">👨‍🎓 Upload Answer Sheet</a>
+      </div>
+
+      <div style="margin-top: 30px; color: #666">
+        <p>Powered by OCR & AI Technology</p>
+      </div>
+    </div>
+  </body>
+</html>

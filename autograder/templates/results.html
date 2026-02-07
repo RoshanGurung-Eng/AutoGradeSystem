@@ -1,0 +1,79 @@
+<!-- autograder/templates/autograder/results.html -->
+
+<!doctype html>
+<html>
+  <head>
+    <title>Results</title>
+    <style>
+      body {
+        font-family: Arial;
+        max-width: 800px;
+        margin: 30px auto;
+      }
+      .container {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .result-card {
+        margin-bottom: 25px;
+        border: 1px solid #eee;
+        padding: 20px;
+        border-radius: 5px;
+      }
+      .question-title {
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #2196f3;
+      }
+      .score {
+        font-size: 24px;
+        font-weight: bold;
+        color: #4caf50;
+      }
+      .keywords-section {
+        margin-top: 15px;
+      }
+      .matched {
+        color: #4caf50;
+      }
+      .missing {
+        color: #f44336;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>📝 Assessment Results</h1>
+      <p>Student: {{ student_name }} | Roll Number: {{ roll_number }}</p>
+
+      {% for answer in answers %}
+      <div class="result-card">
+        <div class="question-title">
+          {{ answer.question.question_number }}: {{
+          answer.question.question_text|truncatechars:50 }}
+        </div>
+
+        <div class="score">Score: {{ answer.score|floatformat:2 }} / 1.00</div>
+
+        <div class="keywords-section">
+          <strong
+            >✅ Matched Keywords ({{ answer.get_matched_list|length }}):</strong
+          >
+          <p class="matched">{{ answer.get_matched_list|join:", " }}</p>
+        </div>
+
+        <div class="keywords-section">
+          <strong
+            >❌ Missing Keywords ({{ answer.get_missing_list|length }}):</strong
+          >
+          <p class="missing">{{ answer.get_missing_list|join:", " }}</p>
+        </div>
+      </div>
+      {% endfor %}
+
+      <a href="{% url 'student_upload' %}">← Upload Another Answer</a>
+    </div>
+  </body>
+</html>
