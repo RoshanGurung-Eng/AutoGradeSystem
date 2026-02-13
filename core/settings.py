@@ -143,3 +143,28 @@ SESSION_SAVE_EVERY_REQUEST = True
 
 # Security settings for development
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None  # Allow camera access in browser
+
+# core/settings.py - ADD AT THE END
+
+# Security settings for production
+DEBUG = False  # Change from True to False
+
+# Allow your PythonAnywhere domain
+ALLOWED_HOSTS = [
+    'RosHan1Gurung.pythonanywhere.com',  # Replace YOUR_USERNAME
+    'localhost',
+    '127.0.0.1',
+]
+
+# Static files configuration
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Media files configuration
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Security settings
+SECURE_SSL_REDIRECT = False  # Set to True if using HTTPS
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
